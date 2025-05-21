@@ -15,4 +15,10 @@ typedef struct Task {
 
 } Task;
 
+void
+clear_screen();
+
+void
+draw(std::vector<Task> tasks);
+
 #endif
