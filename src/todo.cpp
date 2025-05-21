@@ -1,15 +1,15 @@
 #include <iostream>
 #include <string>
 #include <string.h>
-#include <iostream>
+#include <vector>
 
 #include "task.hpp"
-
-
+#include "files.hpp"
 
 int
 main(int argc, char* argv[]) {
-	Task task1("Heeeeeey");
-
-	task1.print();
+	std::vector<Task> tasks;
+	Task task1("hello");
+	tasks.push_back(task1);
+	save_to_file(tasks);
 }
