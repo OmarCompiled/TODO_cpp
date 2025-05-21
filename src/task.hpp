@@ -19,6 +19,6 @@ void
 clear_screen();
 
 void
-draw(std::vector<Task> tasks);
+draw(std::vector<Task> tasks, std::vector<std::string> options);
 
 #endif

@@ -2,6 +2,7 @@
 #include <string>
 #include <string.h>
 #include <vector>
+#include <algorithm>
 
 #include "task.hpp"
 #include "files.hpp"
@@ -15,9 +16,14 @@ main(int argc, char* argv[]) {
 			tasks.push_back(new_task);
 		}
 		save_to_file(tasks);
-		return 0;
+		exit(0);
 	} else {
-		std::vector<std::string> options{"add", "delete", "mark as complete", "exit"};
-		tasks = get_from_file();
-	}	
-}
+		while(true) {
+			std::vector<std::string> options{"add", "delete", "cross", "exit"};
+			tasks = get_from_file();
+			draw(tasks, options);
+			getchar();
+		}
+	}
+}	
+

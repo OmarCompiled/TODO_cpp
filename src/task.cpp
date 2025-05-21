@@ -26,13 +26,15 @@ clear_screen() {
 }
 
 void
-draw(std::vector<Task> tasks) {
+draw(std::vector<Task> tasks, std::vector<std::string> options) {
 	clear_screen();
 	std::cout << "<== TODO ==>" << std::endl;
-
 	for(Task task : tasks) {
 		task.print();	
 	}
-
-	std::cout << "Options:" << std::endl;
+	std::cout << "\nOptions:" << std::endl;
+	for(int i = 0; i < options.size(); i++) {
+		std::cout << i+1 << "- " << options[i] << std::endl;
+	}
+	std::cout << "-> ";
 }
