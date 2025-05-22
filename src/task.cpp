@@ -16,8 +16,8 @@ Task::print() {
 }
 
 void
-Task::mark_complete() {
-	done = true;
+Task::toggle_status() {
+	done = (done == true ? false : true);
 }
 
 void

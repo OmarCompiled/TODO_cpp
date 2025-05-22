@@ -49,6 +49,16 @@ main(int argc, char* argv[]) {
 				std::cout << "add is still under construction!";
 				fflush(stdout);
 				sleep(1);
+			} else if(tokens[0] == "delete") {
+							
+			} else if(tokens[0] == "cross") {
+			
+			} else if(tokens[0] == "exit") {
+				exit(0);
+			} else {
+				std::cerr << "!! Unkown option: " << tokens[0];
+				fflush(stdout);
+				sleep(1);
 			}
 		}
 	}

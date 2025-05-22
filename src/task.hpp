@@ -11,7 +11,7 @@ typedef struct Task {
 	print();
 
 	void
-	mark_complete();
+	toggle_status();
 
 } Task;
 
