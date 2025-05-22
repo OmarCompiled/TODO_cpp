@@ -7,7 +7,7 @@
 
 void
 save_to_file(std::vector<Task> tasks) {
-	std::ofstream tasks_file(".tasks", std::ios::app); 
+	std::ofstream tasks_file(".tasks.txt", std::ios::app); 
 	for(Task t : tasks) {
 		tasks_file << t.description << "\n";
 	}
@@ -16,7 +16,7 @@ save_to_file(std::vector<Task> tasks) {
 
 std::vector<Task>
 get_from_file() {
-	std::ifstream tasks_file(".tasks");
+	std::ifstream tasks_file(".tasks.txt");
 	std::vector<Task> tasks;
 	std::string task_descriptor;
 	while(getline(tasks_file, task_descriptor)) {

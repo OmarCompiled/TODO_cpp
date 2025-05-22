@@ -16,7 +16,8 @@ main(int argc, char* argv[]) {
 			tasks.push_back(new_task);
 		}
 		save_to_file(tasks);
-		exit(0);
+	} else if(argc > 2 && !strcmp(argv[1], "delete")) {
+		
 	} else {
 		while(true) {
 			std::vector<std::string> options{"add", "delete", "cross", "exit"};
@@ -25,5 +26,7 @@ main(int argc, char* argv[]) {
 			getchar();
 		}
 	}
+
+	return 0;
 }	
 
