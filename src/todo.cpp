@@ -47,16 +47,32 @@ main(int argc, char* argv[]) {
 			
 			bool not_singleton = tokens.size() > 1;
 			if(tokens[0] == "add" && not_singleton) {
-				std::string new_tasks_description;
+				std::string new_tasks_description = "";
 				for(int i = 1; i < tokens.size(); i++) {
 					new_tasks_description += tokens[i];
+					if(i != tokens.size() - 1) {
+						new_tasks_description += " ";
+					}
 				}
 				Task new_task(new_tasks_description);
 				tasks = {new_task};
 				save_to_file(tasks);
 			} else if(tokens[0] == "delete" && not_singleton) {
-											
-			} else if(tokens[0] == "exit") {
+				std::string deleted_task_description = "";
+				std::vector<std::string> deleted_task;
+				for(int i = 1; i < tokens.size(); i++) {
+					deleted_task_description += tokens[i];
+					if(i != tokens.size() - 1) {
+						deleted_task_description += " ";
+					}
+				}
+				deleted_task = {deleted_task_description};
+				delete_from_file(deleted_task);
+			} else if(tokens[0] == "delete" && !not_singleton) {
+				remove(".tasks.txt");
+				tasks = {};
+				save_to_file(tasks);
+			}	else if(tokens[0] == "exit") {
 				exit(0);
 			} else {
 				std::cerr << "!! Unkown option: " << tokens[0];

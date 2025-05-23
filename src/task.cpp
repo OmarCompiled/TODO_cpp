@@ -9,7 +9,6 @@ Task::Task(const std::string description) : description(description), done(false
 
 void 
 Task::print() {
-	printf("- ");
 	std::cout << description << std::endl;
 }
 
@@ -29,8 +28,9 @@ draw(std::vector<Task> tasks, std::vector<std::string> options) {
 	printf("\033[92m");
 	std::cout << "<== TODO ==>" << std::endl;
 	printf("\033[0m");
-	for(Task task : tasks) {
-		task.print();	
+	for(int i = 0; i < tasks.size(); i++) {
+		printf("%d - ", i);
+		tasks[i].print();	
 	}
 	std::cout << std::endl;
 	printf("\033[92m");
