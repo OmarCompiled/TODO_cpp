@@ -44,15 +44,18 @@ main(int argc, char* argv[]) {
 			std::string command;
 			std::getline(std::cin, command);
 			tokenize(&tokens, command);
-
-			if(tokens[0] == "add") {
-				std::cout << "add is still under construction!";
-				fflush(stdout);
-				sleep(1);
-			} else if(tokens[0] == "delete") {
-							
-			} else if(tokens[0] == "cross") {
 			
+			bool not_singleton = tokens.size() > 1;
+			if(tokens[0] == "add" && not_singleton) {
+				std::string new_tasks_description;
+				for(int i = 1; i < tokens.size(); i++) {
+					new_tasks_description += tokens[i];
+				}
+				Task new_task(new_tasks_description);
+				tasks = {new_task};
+				save_to_file(tasks);
+			} else if(tokens[0] == "delete" && not_singleton) {
+											
 			} else if(tokens[0] == "exit") {
 				exit(0);
 			} else {
