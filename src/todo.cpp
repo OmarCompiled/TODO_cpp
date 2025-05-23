@@ -76,7 +76,7 @@ main(int argc, char* argv[]) {
 				deleted_task = {deleted_task_description};
 				delete_from_file(deleted_task);
 			} else if(tokens[0] == "delete" && !not_singleton) {
-				remove(".tasks.txt");
+				remove(".tasks");
 				tasks = {};
 				save_to_file(tasks);
 			}	else if(tokens[0] == "exit") {
