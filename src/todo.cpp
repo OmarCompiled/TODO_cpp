@@ -40,7 +40,7 @@ main(int argc, char* argv[]) {
 			task.print();
 		}
 		std::cout << std::endl;
-	}	else {
+	}	else if(argc == 1) {
 		while(true) {		
 			std::vector<std::string> options{"add", "delete", "exit"};
 			tasks = get_from_file();
@@ -87,6 +87,10 @@ main(int argc, char* argv[]) {
 				sleep(1);
 			}
 		}
+	} else {
+		std::cerr << "!! Unkown option: " << argv[1] << std::endl;
+		fflush(stdout);
+		sleep(1);
 	}
 
 	return 0;
