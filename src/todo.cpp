@@ -35,7 +35,7 @@ main(int argc, char* argv[]) {
 		delete_from_file(tasks_to_delete);
 	} else {
 		while(true) {		
-			std::vector<std::string> options{"add", "delete", "cross", "exit"};
+			std::vector<std::string> options{"add", "delete", "exit"};
 			tasks = get_from_file();
 			
 			draw(tasks, options);

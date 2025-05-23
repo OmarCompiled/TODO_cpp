@@ -9,9 +9,7 @@ Task::Task(const std::string description) : description(description), done(false
 
 void 
 Task::print() {
-	done == true ? 1 : printf("\033[91m");
-	printf("-[%1c] ", (done == true ? ' ' : 'x'));
-	printf("\033[0m");
+	printf("- ");
 	std::cout << description << std::endl;
 }
 
@@ -28,13 +26,19 @@ clear_screen() {
 void
 draw(std::vector<Task> tasks, std::vector<std::string> options) {
 	clear_screen();
+	printf("\033[92m");
 	std::cout << "<== TODO ==>" << std::endl;
+	printf("\033[0m");
 	for(Task task : tasks) {
 		task.print();	
 	}
-	std::cout << "\nOptions:" << std::endl;
-	for(int i = 0; i < options.size(); i++) {
-		std::cout << i+1 << "- " << options[i] << std::endl;
+	std::cout << std::endl;
+	printf("\033[92m");
+	std::cout << "<== Options ==>" << std::endl;
+	printf("\033[0m");
+	for(std::string option : options) {
+		printf("- ");
+		std::cout << option << std::endl;
 	}
 	std::cout << "-> ";
 }
