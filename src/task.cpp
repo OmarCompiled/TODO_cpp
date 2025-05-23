@@ -29,7 +29,7 @@ draw(std::vector<Task> tasks, std::vector<std::string> options) {
 	std::cout << "<== TODO ==>" << std::endl;
 	printf("\033[0m");
 	for(int i = 0; i < tasks.size(); i++) {
-		printf("%d - ", i);
+		printf("%d - ", i + 1);
 		tasks[i].print();	
 	}
 	std::cout << std::endl;

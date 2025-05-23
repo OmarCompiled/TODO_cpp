@@ -33,7 +33,14 @@ main(int argc, char* argv[]) {
 			tasks_to_delete.push_back(argv[i]);
 		}	
 		delete_from_file(tasks_to_delete);
-	} else {
+	} else if(argc == 2 && !strcmp(argv[1], "list")) {
+		tasks = get_from_file();
+		std::cout << std::endl;
+		for(Task task : tasks) {
+			task.print();
+		}
+		std::cout << std::endl;
+	}	else {
 		while(true) {		
 			std::vector<std::string> options{"add", "delete", "exit"};
 			tasks = get_from_file();

@@ -3,13 +3,14 @@
 #include <vector>
 #include <algorithm>
 #include <cstdio>
+#include <unistd.h>
 
 #include "task.hpp"
 #include "files.hpp"
 
 void
 save_to_file(std::vector<Task> tasks) {
-	std::ofstream tasks_file(".tasks.txt", std::ios::app); 
+	std::ofstream tasks_file(".tasks", std::ios::app); 
 	for(Task t : tasks) {
 		tasks_file << t.description << "\n";
 	}
@@ -18,7 +19,7 @@ save_to_file(std::vector<Task> tasks) {
 
 std::vector<Task>
 get_from_file() {
-	std::ifstream tasks_file(".tasks.txt");
+	std::ifstream tasks_file(".tasks");
 	std::vector<Task> tasks;
 	std::string task_descriptor;
 	while(getline(tasks_file, task_descriptor)) {
@@ -31,7 +32,7 @@ get_from_file() {
 void
 delete_from_file(std::vector<std::string> tasks) {
 	std::vector<std::string> temp;
-	std::ifstream tasks_file_read(".tasks.txt");
+	std::ifstream tasks_file_read(".tasks");
 	std::string task_descriptor;
 	while(getline(tasks_file_read, task_descriptor)) {
 		temp.push_back(task_descriptor);
@@ -39,10 +40,16 @@ delete_from_file(std::vector<std::string> tasks) {
 	tasks_file_read.close();	
 	for(std::string name : tasks) {
 		auto task = std::find(temp.begin(), temp.end(), name);
-		temp.erase(task);
+		if(task != temp.end()){
+			temp.erase(task);
+		} else {
+			std::cerr << "This task does not exist." << std::endl;
+			fflush(stdout);
+			sleep(1);
+		}
 	}
-	remove(".tasks.txt");
-	std::ofstream tasks_file_write(".tasks.txt", std::ios::app);
+	remove(".tasks");
+	std::ofstream tasks_file_write(".tasks", std::ios::app);
 	for(std::string task : temp) {
 		tasks_file_write << task << "\n";
 	}

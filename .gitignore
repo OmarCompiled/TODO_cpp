@@ -1,3 +1,8 @@
 # Executables
 *.out
 *.app
+
+*.txt
+
+todo
+.tasks
